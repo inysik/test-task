@@ -1,0 +1,238 @@
+@import "./variable.scss";
+
+.app {
+    margin: 36px auto 0;
+    width: 1280px;
+
+    &__cards {
+        margin-top: 40px;
+        padding: 4px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        background: linear-gradient(180deg,
+                rgba(107, 125, 222, 0.12) 0%,
+                #2921a5 100%);
+        border-radius: 24px;
+        width: calc(100% + 10px);
+        transform: translate(-5px, -5px);
+        height: calc(100% + 10px);
+        border-color: 4px solid rgba(107, 125, 222, 0.24);
+        box-shadow: 0px 24px 48px 0px rgba(23, 43, 151, 0.72);
+
+        &::before,
+        &::after {
+            content: "";
+            mask: url("../img/arrow.svg");
+            position: absolute;
+            background-color: rgba(255, 255, 255, 1);
+            width: 92px;
+            height: 40px;
+            z-index: 1;
+            top: 96px;
+        }
+
+        &::before {
+            left: 380px;
+        }
+
+        &::after {
+            left: 808px;
+        }
+    }
+
+    &__title {
+        font-family: $fontFamily;
+        font-size: $fontSizeM;
+        font-weight: $fontWeightM;
+        line-height: $lineHeightM;
+        color: #22284a;
+    }
+
+    &__button {
+        margin-top: 55px;
+        padding: 12px 16px;
+        @include flex;
+        gap: 12px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, #5dc416 0%, #367b05 100%);
+        border: 3px solid rgba(149, 255, 75, 0.64);
+        box-shadow: 0px 4px 8px 0px rgba(61, 147, 0, 0.48),
+            0px 0px 0px 4px rgba(91, 192, 20, 0.24);
+        font-family: $fontFamily;
+        font-size: $fontSizeXS;
+        font-weight: $fontWeightS;
+        line-height: $lineHeightXS;
+        color: rgba(255, 255, 255, 1);
+        transform: translateX(400%);
+    }
+}
+
+
+
+.card {
+    border-radius: 20px;
+    width: 420px;
+    height: 352px;
+    position: relative;
+
+    &__step-list {
+        padding: 20px 20px 0px 20px;
+        display: flex;
+        gap: 16px;
+        font-family: $fontFamily;
+        font-size: $fontSizeS;
+        font-weight: $fontWeightM;
+        line-height: $lineHeightS;
+        color: rgba(255, 255, 255, 1);
+    }
+
+    &_one {
+        background: linear-gradient(180deg, #6377e1 0%, #2920a5 100%);
+
+        &::before {
+            @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #475fdf 100%));
+            transition: 0.3s;
+        }
+
+        &:hover {
+            background: linear-gradient(180deg, #657eff 0%, #2920a5 100%);
+
+            &::before {
+                @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #475fdf 100%),
+                    6px);
+            }
+        }
+    }
+
+    &_two {
+        background: linear-gradient(180deg, #e163e1 0%, #741595 100%);
+
+        &::before {
+            @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #b247df 100%));
+            transition: 0.3s;
+        }
+
+        &:hover {
+            background: linear-gradient(180deg, #fc69fc 0%, #741595 100%);
+
+            &::before {
+                @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #b247df 100%),
+                    6px);
+            }
+        }
+    }
+
+    &_three {
+        background: linear-gradient(180deg, #55ce00 0%, #014d1d 100%);
+
+        &::before {
+            @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #3a8207 100%));
+            transition: 0.3s;
+        }
+
+        &:hover {
+            background: linear-gradient(180deg, #5de101 0%, #014d1d 100%);
+
+            &::before {
+                @include step-card(linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, #3a8207 100%),
+                    6px);
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 320px;
+        transform: translateY(20px);
+    }
+
+    &__number {
+        padding: 12px 17px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        position: relative;
+
+        &_one {
+            background: linear-gradient(180deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.32) 100%);
+
+            &::before {
+                @include step-number("1",
+                    linear-gradient(180deg, #2920a5 0%, #6377e1 100%));
+            }
+        }
+
+        &_two {
+            background: linear-gradient(180deg, #741595 0%, #e163e1 100%);
+
+            &::before {
+                @include step-number("2",
+                    linear-gradient(180deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.32) 100%));
+            }
+        }
+
+        &_three {
+            background: linear-gradient(180deg, #014d1d 0%, #55ce00 100%);
+
+            &::before {
+                @include step-number("3",
+                    linear-gradient(180deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.32) 100%));
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+
+    .app {
+        margin-top: 32px;
+        width: 336px;
+
+        @include flex;
+        flex-direction: column;
+
+        &__button {
+            transform: translateX(0%);
+            transform: translateY(20px)
+        }
+
+        &__cards {
+            @include flex;
+            flex-direction: column;
+
+            &::before,
+            &::after {
+                mask: url("../img/arrow_down.svg");
+                width: 40px;
+                height: 90px;
+                left: 310px;
+            }
+
+            &::before {
+                top: 320px;
+            }
+
+            &::after {
+                top: 680px;
+            }
+        }
+    }
+
+    .card {
+        width: 328px;
+        height: 352px;
+
+        &__img {
+            margin-left: -40px;
+            width: 126%;
+        }
+    }
+}

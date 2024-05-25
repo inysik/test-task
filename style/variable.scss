@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,700;1,300&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+$fontFamily: "Roboto", sans-serif;
+
+$fontSizeXS: 16px;
+$fontSizeS: 20px;
+$fontSizeM: 24px;
+
+$fontWeightS: 400;
+$fontWeightM: 700;
+
+$lineHeightXS: 16px;
+$lineHeightS: 24px;
+$lineHeightM:  28px;
+
+
+
+@mixin flex($justifyContent: center, $alignItems: center) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  
+  }
+
+
+@mixin step-number($content, $gradient) {
+    content: $content;
+    font-size: $fontSizeM;
+    line-height: $lineHeightS;
+    font-weight: $fontWeightM;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    @include flex;
+    background: $gradient;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+@mixin step-card($gradient, $width: 2px) {
+    content: "";
+    border-radius: 20px;
+    @include flex;
+    background: $gradient;
+    width: calc(100% + 2 * $width);
+    top: -$width;
+    left: -$width;
+    height: calc(100% + 2 * $width);
+    position: absolute;
+    z-index: -1;
+}
